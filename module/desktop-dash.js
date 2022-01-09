@@ -60,7 +60,7 @@ function getData(data) {
   }
   bartendersData.forEach((bartender) => {
     getBartenderStatus(bartender);
-    showBartenderData(bartender);
+    // showBartenderData(bartender);
   });
 }
 
@@ -154,13 +154,13 @@ function getBartenderStatus(bartender) {
   });
 }
 
-function showBartenderData(bartender) {
-  const row = document.querySelector(`.${bartender.name}-row`);
-  //change data in row
-  const nameCol = row.querySelector(`[data-bartender="name"]`);
-  nameCol.textContent = bartender.name;
-  const statusDetCol = row.querySelector(`[data-bartender="statusDetail"]`);
-  statusDetCol.textContent = bartender.statusDetail;
-  const tapCol = row.querySelector(`[data-bartender="usingTap"]`);
-  tapCol.textContent = bartender.usingTap;
-}
+// function showBartenderData(bartender) {
+//   const row = document.querySelector(`.${bartender.name}-row`);
+//   //change data in row
+//   const nameCol = row.querySelector(`[data-bartender="name"]`);
+//   nameCol.textContent = bartender.name;
+//   const statusDetCol = row.querySelector(`[data-bartender="statusDetail"]`);
+//   statusDetCol.textContent = bartender.statusDetail;
+//   const tapCol = row.querySelector(`[data-bartender="usingTap"]`);
+//   tapCol.textContent = bartender.usingTap;
+// }
