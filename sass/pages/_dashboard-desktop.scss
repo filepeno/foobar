@@ -1,7 +1,11 @@
+.dashboard-header {
+  width: 25%;
+  padding: 0;
+  
+}
+
 .db-info {
-  /* TABLE */
   font-size: 0.9rem;
-  overflow: scroll;
   height: 55vw;
   .list {
     border-collapse: collapse;
