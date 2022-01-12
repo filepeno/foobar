@@ -26,6 +26,11 @@
         width: 25%;
         padding: 0;
       }
+      .components {
+        -webkit-box-shadow: 4px 4px 8px -1px colors.$quaternary;
+        box-shadow: 4px 4px 8px -1px colors.$quaternary;
+        margin: 30px 10px 0px 0px;
+      }
       .iconify {
         margin-top: 0;
         transform: scale(1.2);
