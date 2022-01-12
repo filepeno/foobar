@@ -1,4 +1,7 @@
 @use "../base/colors";
+.components .collapsible {
+  font-size: 1.2rem;
+}
 
 .db-desktop {
   display: grid;
@@ -23,6 +26,7 @@
         width: 25%;
         padding: 0;
       }
+
     }
   }
 
@@ -116,14 +120,22 @@
           .components {
             margin: 1rem 0 0 0;
           }
+
         }
 
         .db-bar-view {
           display: none;
         }
-      
-
+    
     }
+  }
+  .components .collapsible {
+    font-size: 1.5rem;
   }
 }
 
+@media only screen and (max-width: 500px) {
+  .components .collapsible {
+    font-size: 1rem;
+  }
+}
