@@ -3,6 +3,12 @@
   font-size: 1.2rem;
 }
 
+.components .active, .components
+.collapsible:hover {
+  background-color: colors.$secondary;
+  color: colors.$contrast-secondary;
+}
+
 .db-desktop {
   display: grid;
   grid-template-columns: 22% 1fr;
