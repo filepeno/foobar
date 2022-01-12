@@ -1,34 +1,30 @@
-.dashboard-header {
-  width: 25%;
-  padding: 0;
-  
-}
-
-.db-info {
-  font-size: 0.9rem;
-  height: 55vw;
-  .list {
-    border-collapse: collapse;
-  }
-
-  .list tbody tr td {
-    padding: 1px;
-  }
-
-  .list tbody tr:nth-child(odd) td {
-    background-color: lightblue;
-    border-right: rgb(234, 247, 255) 2px dotted;
-  }
-
-  .list tbody tr:nth-child(even) td {
-    border-right: rgb(234, 247, 255) 2px dotted;
-  }
-}
+@use "../base/colors";
 
 .db-desktop {
   display: grid;
   grid-template-columns: 22% 1fr;
   height: 100vh;
+
+  .db-info {
+    font-size: 0.9rem;
+    height: 55vw;
+  
+    .dash-container {
+      margin: 1rem;
+      box-sizing: border-box;
+      height: 53.1vw;
+      // min-width: 230px;
+      position: absolute;
+      width: 25%;
+      overflow-y: scroll;
+      z-index: 1;
+  
+      .dashboard-header {
+        width: 25%;
+        padding: 0;
+      }
+    }
+  }
 
   .db-bar-view {
     position: relative;
@@ -98,22 +94,36 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
-  .dash-container {
-    display: block;
-    min-width: 414px;
-  }
-  .db-bar-view {
-    display: none;
-  }
+@media only screen and (max-width: 850px) {
+    .dashboard {
+      background: colors.$base;
 
-  .db-info {
-    font-size: 0.9rem;
-    overflow: visible;
-    height: 55vw;
-  }
+      .db-desktop {
+        display: block;
 
-  .components {
-    margin: 30px 25px 0px 0px;
+        .db-info {
+          height: 100vh;
+          .dash-container {
+          display: block;
+          margin: 0;
+          padding: 1rem;
+          // min-width: 414px;
+          height: 100vh;
+          position: relative;
+          width: auto;
+          overflow-y: visible;
+          }
+          .components {
+            margin: 1rem 0 0 0;
+          }
+        }
+
+        .db-bar-view {
+          display: none;
+        }
+      
+
+    }
   }
 }
+

@@ -1,17 +1,6 @@
 @use "../base/colors";
 
-.dash-container {
-  margin: 1rem;
-  box-sizing: border-box;
-  height: 55vw;
-  // min-width: 230px;
-  position: absolute;
-  width: 25%;
-  overflow-y: scroll;
-  z-index: 1;
-}
-
-svg {
+.iconify {
   float: right;
   margin-top: -7px;
 }
