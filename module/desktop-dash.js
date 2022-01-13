@@ -7,6 +7,7 @@ import { importBartenderSvg } from "./import-bartender-svg";
 import { startTap, removePreviousTap } from "./get-tap";
 import { toggleCustomer } from "./desktop-dash-customers.js";
 import { createQueue } from "./desktop-dash-queue";
+import { registerClickOnTaps } from "./bar-modals";
 
 window.addEventListener("DOMContentLoaded", start);
 
@@ -35,6 +36,7 @@ let queueSvgs = [];
 async function start() {
   console.log("start");
   await loadSvg();
+  registerClickOnTaps();
   customerSvgs = await loadCustomerSvgs();
   queueSvgs = await loadQueueSvgs();
   loadDynamicData();
