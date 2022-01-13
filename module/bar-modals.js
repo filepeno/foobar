@@ -11,10 +11,25 @@ export function registerClickOnTaps() {
 }
 
 function toggleActiveElement(el, allEls) {
+  /* remove class from others */
   allEls.forEach((element) => {
     if (el !== element) {
       element.classList.remove("bar-el-active");
     }
   });
   el.classList.toggle("bar-el-active");
+  /* check if contains active class */
+  if (el.classList.contains("bar-el-active")) {
+    openModal();
+  } else {
+    removeAllModals();
+  }
+}
+
+function openModal() {
+  removeAllModals();
+  console.log("create modal");
+}
+function removeAllModals() {
+  console.log("remove all modals");
 }
