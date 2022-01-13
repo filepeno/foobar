@@ -12,10 +12,13 @@
 }
 
 .tap:hover {
-  filter: drop-shadow(0 0 10px colors.$font-tertiary);
-  transition: filter 0.1s;
+  filter: drop-shadow(0 0 13px colors.$font-tertiary);
+  transition: filter 0.2s;
 }
 
 .bar-el-active {
-  filter: drop-shadow(0 0 10px colors.$contrast-secondary);
+  filter: drop-shadow(0 0 10px colors.$font-tertiary);
+  &:hover {
+    filter: drop-shadow(0 0 10px colors.$font-tertiary);
+  }
 }
