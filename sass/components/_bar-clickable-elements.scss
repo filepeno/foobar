@@ -1,0 +1,21 @@
+@use "../base/colors";
+
+/* make all elements unclickable */
+.db-bar-view svg {
+  pointer-events: none;
+}
+
+/* make chosen elements interactive */
+.tap {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.tap:hover {
+  filter: drop-shadow(0 0 10px colors.$font-tertiary);
+  transition: filter 0.1s;
+}
+
+.bar-el-active {
+  filter: drop-shadow(0 0 10px colors.$contrast-secondary);
+}
