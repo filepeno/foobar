@@ -1,0 +1,36 @@
+@use "../base/colors";
+@use "../base/fonts";
+
+.tap-modal {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  width: 6rem;
+  background-color: colors.$tertiary;
+  border-radius: 10px;
+  border: 1px solid colors.$font-primary;
+  h3 {
+    font-size: 0.8rem;
+    color: colors.$font-secondary;
+    background-color: colors.$font-primary;
+    // font-weight: fonts.$font-weight-regular;
+    border-radius: 8px 8px 0 0;
+  }
+  p {
+    font-size: 0.8rem;
+  }
+  h2 {
+    color: colors.$font-primary;
+    text-shadow: none;
+    font-size: 1.5rem;
+    font-weight: fonts.$font-weight-light;
+  }
+}
+
+.tap-level-wrapper {
+  display: flex;
+  margin: 0 0.7rem 0.5rem 0.7rem;
+  align-items: center;
+  justify-content: space-between;
+}
