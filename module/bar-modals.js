@@ -1,7 +1,7 @@
 "use strict";
 
 export function registerClickOnTaps() {
-  const taps = document.querySelectorAll(".tap");
+  const taps = document.querySelectorAll(".taps");
   taps.forEach((tap) => {
     tap.addEventListener("click", () => {
       console.log("clicked on tap", tap);
@@ -26,9 +26,12 @@ function toggleActiveElement(el, allEls) {
   }
 }
 
-function openModal(el) {
+async function openModal(el) {
   removeAllModals();
   console.log("open modal");
+  const url = "https://hangover3.herokuapp.com/";
+  let data = await fetchData(url);
+  const elData = matchData(el, data);
   const template = document.querySelector("#tap-modal-template").content;
   const copy = template.cloneNode(true);
   copy.querySelector(".tap-name").textContent = "El Hefe";
@@ -43,6 +46,15 @@ function removeAllModals() {
   document.querySelectorAll(".modal").forEach((element) => {
     element.remove();
   });
+}
+
+function matchData(el, data) {
+  console.log(el, data);
+  //find relevant data
+  const keyword = el.classList[1];
+  if (data.hasOwnProperty(keyword)) {
+    const matchedData = data[keyword];
+  }
 }
 
 function moveModal(modal, el) {
@@ -85,4 +97,10 @@ function moveModal(modal, el) {
       }
     );
   };
+}
+
+async function fetchData(url) {
+  const res = await fetch(url);
+  const jsonData = await res.json();
+  return jsonData;
 }
