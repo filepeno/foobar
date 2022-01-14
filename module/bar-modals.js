@@ -57,7 +57,7 @@ function moveModal(modal, el) {
     [
       {
         transformOrigin: "center",
-        transform: `translateX(${deltaX - 40}px)
+        transform: `translateX(${deltaX - 37}px)
         translateY(${deltaY - 100}px)`,
       },
     ],
