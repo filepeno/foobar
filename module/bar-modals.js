@@ -54,6 +54,7 @@ function matchData(el, data) {
   const keyword = el.classList[1];
   if (data.hasOwnProperty(keyword)) {
     const matchedData = data[keyword];
+    const elNumber = el.id.charAt(el.id.length - 1);
   }
 }
 
