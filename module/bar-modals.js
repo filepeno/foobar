@@ -28,8 +28,15 @@ function toggleActiveElement(el, allEls) {
 
 function openModal() {
   removeAllModals();
-  console.log("create modal");
+  console.log("open modal");
+  const template = document.querySelector("#tap-modal-template").content;
+  const copy = template.cloneNode(true);
+  copy.querySelector(".tap-name").textContent = "El Hefe";
+  document.querySelector(".bar-foreground").appendChild(copy);
 }
 function removeAllModals() {
   console.log("remove all modals");
+  document.querySelectorAll(".modal").forEach((element) => {
+    element.remove();
+  });
 }
