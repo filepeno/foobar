@@ -6,12 +6,12 @@
 }
 
 /* make chosen elements interactive */
-.tap {
+.clickable {
   pointer-events: all;
   cursor: pointer;
 }
 
-.tap:hover {
+.clickable:hover {
   filter: drop-shadow(0 0 13px colors.$font-tertiary);
   transition: filter 0.2s;
 }
