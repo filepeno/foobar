@@ -2,11 +2,11 @@
 
 let newInterval;
 
-export function registerClickOnTaps() {
-  const taps = document.querySelectorAll(".taps");
-  taps.forEach((tap) => {
-    tap.addEventListener("click", () => {
-      toggleActiveElement(tap, taps);
+export function trackClickOnClickableElements() {
+  const clickableEls = document.querySelectorAll(".clickable");
+  clickableEls.forEach((el) => {
+    el.addEventListener("click", () => {
+      toggleActiveElement(el, clickableEls);
     });
   });
 }
