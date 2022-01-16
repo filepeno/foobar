@@ -63,17 +63,15 @@ function createModal(kw, el, data) {
 function trackClickOutsideModal(modal) {
   document.addEventListener("click", (e) => {
     //check if didn't click on modal
-    if (e.target !== modal || e.target.closest(".modal") === null) {
-      //check if clicked on clickable element
-      if (e.target.classList[0] === "clickable" || e.target.closest(".clickable") !== null) {
-        console.log("clicked on other clickable elements");
-      } else {
-        console.log("did NOT click on modal nor on other clickable els");
-        removeAllModals();
-        toggleAllElementsOff();
-      }
+    if (e.target === modal || e.target.closest(".modal") !== null) {
+      console.log("clicked modal");
+    }
+    //check if clicked on clickable element
+    else if (e.target.classList[0] === "clickable" || e.target.closest(".clickable") !== null) {
+      console.log("clicked on other clickable elements");
     } else {
-      console.log("clicked on modal");
+      removeAllModals();
+      toggleAllElementsOff();
     }
   });
 }
