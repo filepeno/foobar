@@ -10,7 +10,7 @@ export function registerClickOnTaps() {
   });
 }
 
-function toggleActiveElement(el, allEls) {
+async function toggleActiveElement(el, allEls) {
   /* remove class from others */
   allEls.forEach((element) => {
     if (el !== element) {
@@ -20,18 +20,31 @@ function toggleActiveElement(el, allEls) {
   el.classList.toggle("bar-el-active");
   /* check if contains active class */
   if (el.classList.contains("bar-el-active")) {
-    openModal(el);
+    const elData = await matchData(el);
+    console.log(elData);
+    // openModal(elData)
   } else {
     removeAllModals();
   }
 }
 
-async function openModal(el) {
+async function matchData(el) {
+  console.log(el);
+  let data = await fetchData();
+
+  //find relevant data
+  const keyword = el.classList[1];
+  if (data.hasOwnProperty(keyword)) {
+    const matchedData = data[keyword];
+    //find exact data based on el id #
+    const elNumber = el.id.charAt(el.id.length - 1);
+    return matchedData[elNumber];
+  }
+}
+
+function openModal(el) {
   removeAllModals();
   console.log("open modal");
-  const url = "https://hangover3.herokuapp.com/";
-  let data = await fetchData(url);
-  const elData = matchData(el, data);
   const template = document.querySelector("#tap-modal-template").content;
   const copy = template.cloneNode(true);
   copy.querySelector(".tap-name").textContent = "El Hefe";
@@ -46,16 +59,6 @@ function removeAllModals() {
   document.querySelectorAll(".modal").forEach((element) => {
     element.remove();
   });
-}
-
-function matchData(el, data) {
-  console.log(el, data);
-  //find relevant data
-  const keyword = el.classList[1];
-  if (data.hasOwnProperty(keyword)) {
-    const matchedData = data[keyword];
-    const elNumber = el.id.charAt(el.id.length - 1);
-  }
 }
 
 function moveModal(modal, el) {
@@ -100,7 +103,8 @@ function moveModal(modal, el) {
   };
 }
 
-async function fetchData(url) {
+async function fetchData() {
+  const url = "https://hangover3.herokuapp.com/";
   const res = await fetch(url);
   const jsonData = await res.json();
   return jsonData;
