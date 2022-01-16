@@ -6,20 +6,27 @@
   flex-direction: column;
   text-align: center;
   position: absolute;
-  width: 6rem;
+
   background-color: colors.$tertiary;
   border-radius: 10px;
   border: 1px solid colors.$font-primary;
+
+  svg.iconify {
+    position: relative;
+    color: black;
+    margin: 0;
+    float: none;
+  }
+  h4 {
+    font-size: 0.8rem;
+  }
   h3 {
+    margin: 0.3rem 0 0.3rem 0;
     font-size: 0.8rem;
-    color: colors.$font-secondary;
-    background-color: colors.$font-primary;
-    // font-weight: fonts.$font-weight-regular;
-    border-radius: 8px 8px 0 0;
+    width: 6rem;
+    font-weight: fonts.$font-weight-regular;
   }
-  p {
-    font-size: 0.8rem;
-  }
+
   h2 {
     color: colors.$font-primary;
     text-shadow: none;
@@ -33,4 +40,15 @@
   margin: 0 0.7rem 0.5rem 0.7rem;
   align-items: center;
   justify-content: space-between;
+}
+
+.modal-header {
+  display: flex;
+  color: colors.$font-secondary;
+  background-color: colors.$font-primary;
+  border-radius: 8px 8px 0 0;
+  padding: 0.2rem 0.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
 }

@@ -49,7 +49,7 @@ function openModal(kw, el, data) {
   if (kw === "taps") {
     template = document.querySelector("#tap-modal-template").content;
     copy = template.cloneNode(true);
-    copy.querySelector(".tap-name").textContent = data.beer;
+    copy.querySelector(".tap-name").textContent = `"${data.beer}"`;
   }
   //append
   document.querySelector(".bar-foreground").appendChild(copy);
