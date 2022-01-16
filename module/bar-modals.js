@@ -1,5 +1,7 @@
 "use strict";
 
+let newInterval;
+
 export function registerClickOnTaps() {
   const taps = document.querySelectorAll(".taps");
   taps.forEach((tap) => {
@@ -23,6 +25,7 @@ function toggleActiveElement(el, allEls) {
     matchData(el);
   } else {
     removeAllModals();
+    clearInterval(newInterval);
   }
 }
 
@@ -59,6 +62,7 @@ function openModal(kw, el, data) {
   //make invisible
   newModal.style.visibility = "hidden";
   moveModal(newModal, el);
+  newInterval = setInterval(() => updateModalContent(newModal), 5000);
 }
 
 function removeAllModals() {
@@ -133,4 +137,8 @@ function displayPercentage(clone, data) {
     // clone.querySelector(".tap-percentage").style.color = "green";
     clone.querySelector(".tap-icon").src = "/assets/beer/full.svg";
   }
+}
+
+function updateModalContent(modal) {
+  console.log("update modal", modal);
 }
