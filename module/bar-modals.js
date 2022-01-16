@@ -10,7 +10,7 @@ export function registerClickOnTaps() {
   });
 }
 
-async function toggleActiveElement(el, allEls) {
+function toggleActiveElement(el, allEls) {
   /* remove class from others */
   allEls.forEach((element) => {
     if (el !== element) {
@@ -20,9 +20,7 @@ async function toggleActiveElement(el, allEls) {
   el.classList.toggle("bar-el-active");
   /* check if contains active class */
   if (el.classList.contains("bar-el-active")) {
-    const elData = await matchData(el);
-    console.log(elData);
-    // openModal(elData)
+    matchData(el);
   } else {
     removeAllModals();
   }
@@ -38,22 +36,29 @@ async function matchData(el) {
     const matchedData = data[keyword];
     //find exact data based on el id #
     const elNumber = el.id.charAt(el.id.length - 1);
-    return matchedData[elNumber];
+    openModal(keyword, el, matchedData[elNumber]);
   }
 }
 
-function openModal(el) {
+function openModal(kw, el, data) {
   removeAllModals();
-  console.log("open modal");
-  const template = document.querySelector("#tap-modal-template").content;
-  const copy = template.cloneNode(true);
-  copy.querySelector(".tap-name").textContent = "El Hefe";
+  console.log("open modal for", kw, el, data);
+  let template;
+  let copy;
+  //create and populate modal for taps
+  if (kw === "taps") {
+    template = document.querySelector("#tap-modal-template").content;
+    copy = template.cloneNode(true);
+    copy.querySelector(".tap-name").textContent = data.beer;
+  }
+  //append
   document.querySelector(".bar-foreground").appendChild(copy);
   const newModal = document.querySelector(".modal");
   //make invisible
   newModal.style.visibility = "hidden";
   moveModal(newModal, el);
 }
+
 function removeAllModals() {
   console.log("remove all modals");
   document.querySelectorAll(".modal").forEach((element) => {
@@ -62,7 +67,6 @@ function removeAllModals() {
 }
 
 function moveModal(modal, el) {
-  console.log(modal, el);
   const pos1 = modal.getBoundingClientRect();
   const pos2 = el.getBoundingClientRect();
   const deltaX = pos2.left - pos1.left;
