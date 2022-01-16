@@ -50,6 +50,8 @@ function openModal(kw, el, data) {
     template = document.querySelector("#tap-modal-template").content;
     copy = template.cloneNode(true);
     copy.querySelector(".tap-name").textContent = `"${data.beer}"`;
+    //calculate percentage
+    displayPercentage(copy, data);
   }
   //append
   document.querySelector(".bar-foreground").appendChild(copy);
@@ -112,4 +114,23 @@ async function fetchData() {
   const res = await fetch(url);
   const jsonData = await res.json();
   return jsonData;
+}
+
+function displayPercentage(clone, data) {
+  //calculate percentage
+  const percentage = Math.round((parseInt(data.level) / 2500) * 100) + "%";
+  clone.querySelector(".tap-percentage").textContent = percentage;
+
+  if (parseInt(percentage) <= 70 && parseInt(percentage) > 40) {
+    console.log(data.beer + " low");
+    // clone.querySelector(".tap-percentage").style.color = "orange";
+    clone.querySelector(".tap-icon").src = "/assets/beer/low.svg";
+  } else if (parseInt(percentage) <= 40) {
+    console.log(data.beer + "  very low");
+    // clone.querySelector(".tap-percentage").style.color = "red";
+    clone.querySelector(".tap-icon").src = "/assets/beer/very-low.svg";
+  } else {
+    // clone.querySelector(".tap-percentage").style.color = "green";
+    clone.querySelector(".tap-icon").src = "/assets/beer/full.svg";
+  }
 }
