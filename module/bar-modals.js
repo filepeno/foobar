@@ -24,6 +24,7 @@ async function toggleActiveElement(el, allEls) {
     //find relevant data
     const keyword = el.classList[1];
     const data = await matchData(keyword, el);
+
     createModal(keyword, el, data);
   } else {
     removeAllModals();
@@ -56,6 +57,20 @@ function createModal(kw, el, data) {
   newModal.style.visibility = "hidden";
   moveModal(newModal, el);
   newInterval = setInterval(() => updateModalContent(kw, el, newModal), 1000);
+  trackClickOutsideModal(newModal);
+}
+
+function trackClickOutsideModal(modal) {
+  document.addEventListener("click", (e) => {
+    if (e.target !== modal) {
+      if (e.target.closest(".modal") === null) {
+        console.log("did NOT click on modal");
+        removeAllModals();
+      }
+    } else {
+      console.log("clicked on modal");
+    }
+  });
 }
 
 function removeAllModals() {
