@@ -62,14 +62,26 @@ function createModal(kw, el, data) {
 
 function trackClickOutsideModal(modal) {
   document.addEventListener("click", (e) => {
-    if (e.target !== modal) {
-      if (e.target.closest(".modal") === null) {
-        console.log("did NOT click on modal");
+    //check if didn't click on modal
+    if (e.target !== modal || e.target.closest(".modal") === null) {
+      //check if clicked on clickable element
+      if (e.target.classList[0] === "clickable" || e.target.closest(".clickable") !== null) {
+        console.log("clicked on other clickable elements");
+      } else {
+        console.log("did NOT click on modal nor on other clickable els");
         removeAllModals();
+        toggleAllElementsOff();
       }
     } else {
       console.log("clicked on modal");
     }
+  });
+}
+
+function toggleAllElementsOff() {
+  const taps = document.querySelectorAll(".taps");
+  taps.forEach((tap) => {
+    tap.classList.remove("bar-el-active");
   });
 }
 
