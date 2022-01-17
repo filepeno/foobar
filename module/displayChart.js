@@ -1,40 +1,26 @@
 import { render } from "sass";
 
+let firstLoad = true;
+
 export function displayChart(sortBeer) {
   document.querySelector(".chart").innerHTML = "";
 
   const newDiv = document.createElement("canvas");
   newDiv.id = "myChart";
   document.querySelector(".chart").appendChild(newDiv);
-
+  if (firstLoad === true) {
+    openSalesCollapsible();
+  }
   const ctx = document.getElementById("myChart");
   const myChart = new Chart(ctx, {
     type: "bar",
     data: {
-      labels: [
-        sortBeer[0][0],
-        sortBeer[1][0],
-        sortBeer[2][0],
-        sortBeer[3][0],
-        sortBeer[4][0],
-      ],
+      labels: [sortBeer[0][0], sortBeer[1][0], sortBeer[2][0], sortBeer[3][0], sortBeer[4][0]],
       datasets: [
         {
           label: "Top 5 Beer",
-          data: [
-            sortBeer[0][1],
-            sortBeer[1][1],
-            sortBeer[2][1],
-            sortBeer[3][1],
-            sortBeer[4][1],
-          ],
-          backgroundColor: [
-            "#c8f42e",
-            "#c8f42e",
-            "#c8f42e",
-            "#c8f42e",
-            "#c8f42e",
-          ],
+          data: [sortBeer[0][1], sortBeer[1][1], sortBeer[2][1], sortBeer[3][1], sortBeer[4][1]],
+          backgroundColor: ["#c8f42e", "#c8f42e", "#c8f42e", "#c8f42e", "#c8f42e"],
           borderWidth: 1,
         },
       ],
@@ -87,3 +73,12 @@ export function displayChart(sortBeer) {
 //     animation: false,
 //   },
 // });
+
+/* Open "Sales"-collapsible content on load */
+function openSalesCollapsible() {
+  const salesButton = document.querySelector("#dash-chart .collapsible");
+  salesButton.classList.add("active");
+  const content = salesButton.nextElementSibling;
+  content.style.maxHeight = content.scrollHeight + "px";
+  firstLoad = false;
+}

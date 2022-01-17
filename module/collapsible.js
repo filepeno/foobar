@@ -1,16 +1,27 @@
 export function collapsible() {
-  var coll = document.getElementsByClassName("collapsible");
-  var i;
+  const coll = document.querySelectorAll(".collapsible");
+  // let i;
+  coll.forEach((element) => {
+    element.addEventListener("click", function () {
+      console.log("clicked on", this);
+      toggleActiveElement(this, coll);
+      // this.classList.toggle("active");
+    });
+  });
+}
 
-  for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function () {
-      this.classList.toggle("active");
-      var content = this.nextElementSibling;
-      if (content.style.display === "block") {
-        content.style.display = "none";
-      } else {
-        content.style.display = "block";
+function toggleActiveElement(el, allEls) {
+  el.classList.toggle("active");
+  const content = el.nextElementSibling;
+  if (el.classList.contains("active")) {
+    content.style.maxHeight = content.scrollHeight + "px";
+    allEls.forEach((element) => {
+      if (el !== element) {
+        element.classList.remove("active");
+        element.nextElementSibling.style.maxHeight = null;
       }
     });
+  } else {
+    content.style.maxHeight = null;
   }
 }

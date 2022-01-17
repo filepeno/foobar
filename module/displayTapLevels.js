@@ -1,7 +1,7 @@
 export function displayTapLevels(tapData) {
   console.log(tapData.taps);
 
-  document.querySelector("#dash-tap .content").innerHTML = "";
+  document.querySelector("#dash-tap .item-container").innerHTML = "";
 
   const allTap = tapData.taps;
 
@@ -10,9 +10,7 @@ export function displayTapLevels(tapData) {
 
     let percentage = Math.round((parseInt(element.level) / 2500) * 100) + "%";
 
-    const clone = document
-      .querySelector("template#tap-levels")
-      .content.cloneNode(true);
+    const clone = document.querySelector("template#tap-levels").content.cloneNode(true);
 
     clone.querySelector(".tap-name").textContent = element.beer;
     clone.querySelector(".tap-percentage").textContent = percentage;
@@ -30,6 +28,6 @@ export function displayTapLevels(tapData) {
       clone.querySelector(".tap-icon").src = "/assets/beer/full.svg";
     }
 
-    document.querySelector("#dash-tap .content").appendChild(clone);
+    document.querySelector("#dash-tap .item-container").appendChild(clone);
   });
 }
