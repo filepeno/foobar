@@ -46,3 +46,9 @@
   //   border-top: 1px solid colors.$contrast-primary;
   // }
 }
+
+@media only screen and (max-width: 1000px) and (min-width: 850px) {
+  .collapsible {
+    padding: 1rem;
+  }
+}
