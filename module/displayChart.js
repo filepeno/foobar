@@ -8,9 +8,6 @@ export function displayChart(sortBeer) {
   const newDiv = document.createElement("canvas");
   newDiv.id = "myChart";
   document.querySelector(".chart").appendChild(newDiv);
-  if (firstLoad === true) {
-    openSalesCollapsible();
-  }
   const ctx = document.getElementById("myChart");
   const myChart = new Chart(ctx, {
     type: "bar",
@@ -36,6 +33,9 @@ export function displayChart(sortBeer) {
   });
 
   Chart.defaults.color = "white";
+  if (firstLoad === true) {
+    openSalesCollapsible();
+  }
 }
 
 // ****chart two****
