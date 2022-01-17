@@ -1,16 +1,27 @@
 export function collapsible() {
-  const coll = document.getElementsByClassName("collapsible");
-  let i;
-  for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function () {
-      this.classList.toggle("active");
-      console.log("click");
-      var content = this.nextElementSibling;
-      if (content.style.display === "block") {
-        content.style.display = "none";
-      } else {
-        content.style.display = "block";
+  const coll = document.querySelectorAll(".collapsible");
+  // let i;
+  coll.forEach((element) => {
+    element.addEventListener("click", function () {
+      console.log("clicked on", this);
+      toggleActiveElement(this, coll);
+      // this.classList.toggle("active");
+    });
+  });
+}
+
+function toggleActiveElement(el, allEls) {
+  el.classList.toggle("active");
+  const content = el.nextElementSibling;
+  if (el.classList[1] === "active") {
+    content.style.display = "block";
+    allEls.forEach((element) => {
+      if (el !== element) {
+        element.classList.remove("active");
+        element.nextElementSibling.style.display = "none";
       }
     });
+  } else {
+    content.style.display = "none";
   }
 }
