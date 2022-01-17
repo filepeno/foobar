@@ -13,12 +13,12 @@ export function collapsible() {
 function toggleActiveElement(el, allEls) {
   el.classList.toggle("active");
   const content = el.nextElementSibling;
-  if (el.classList[1] === "active") {
+  if (el.classList.contains("active")) {
     content.style.maxHeight = content.scrollHeight + "px";
     allEls.forEach((element) => {
       if (el !== element) {
         element.classList.remove("active");
-        element.style.maxHeight = null;
+        element.nextElementSibling.style.maxHeight = null;
       }
     });
   } else {
