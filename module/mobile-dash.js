@@ -9,11 +9,10 @@ import { collapsible } from "./collapsible";
 
 window.addEventListener("DOMContentLoaded", init);
 
+collapsible();
+
 async function init() {
   const url = "https://hangover3.herokuapp.com/";
-
-  console.log("init");
-
   fetch(url)
     .then((response) => response.json())
     .then((jsonData) => {
@@ -24,13 +23,11 @@ async function init() {
 
 function prepareAllData(jsonData) {
   console.log(jsonData);
-
   displayQues(jsonData);
   displayTapLevels(jsonData);
   displayKegInventory(jsonData);
   displayBartenders(jsonData);
   calculateSales(jsonData);
-  collapsible();
 }
 
 // if (window.matchMedia("(max-device-width: 414px)").matches) {
