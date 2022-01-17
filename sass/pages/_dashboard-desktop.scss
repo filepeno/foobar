@@ -3,9 +3,7 @@
   font-size: 1.2rem;
 }
 
-.components .active,
-.components .collapsible:hover {
-  background-color: colors.$secondary;
+.components .active {
   color: colors.$contrast-secondary;
 }
 
@@ -148,6 +146,13 @@
   }
   .components .collapsible {
     font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 850px) {
+  .components .collapsible {
+    font-size: 1.1rem;
+    padding: 1rem;
   }
 }
 

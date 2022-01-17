@@ -37,8 +37,7 @@
   transition: max-height 0.2s ease-out;
 }
 
-.active,
-.collapsible:hover {
+.active {
   background-color: colors.$secondary;
   color: colors.$contrast-primary;
 
@@ -47,8 +46,6 @@
   // }
 }
 
-@media only screen and (max-width: 1000px) and (min-width: 850px) {
-  .collapsible {
-    padding: 1rem;
-  }
+.collapsible:hover {
+  background-color: colors.$secondary;
 }
