@@ -1,0 +1,48 @@
+@use "../base/colors";
+
+.collapsible {
+  background-color: colors.$secondary;
+  color: colors.$font-primary;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1.5rem;
+  padding: 1.5rem;
+  --glow-color: none;
+  --glow-spread-color: none;
+  --enhanced-glow-color: none;
+  --btn-color: none;
+  font-weight: normal;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
+  transition: none;
+  margin: 0;
+  height: 100%;
+
+  &::after {
+    content: "";
+    display: block;
+    border-top: 1px solid colors.$font-primary;
+  }
+}
+
+.collapsible + .content {
+  padding: 0 1.3rem;
+  overflow: hidden;
+  background-color: colors.$secondary;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+}
+
+.active,
+.collapsible:hover {
+  background-color: colors.$secondary;
+  color: colors.$contrast-primary;
+
+  // &::after {
+  //   border-top: 1px solid colors.$contrast-primary;
+  // }
+}

@@ -4,13 +4,6 @@
   color: colors.$font-primary;
 }
 
-.content {
-  padding: 0 1.3rem;
-  display: none;
-  overflow: hidden;
-  background-color: colors.$secondary;
-}
-
 .item-container {
   display: flex;
   flex-direction: row;

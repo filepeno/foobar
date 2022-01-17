@@ -14,14 +14,14 @@ function toggleActiveElement(el, allEls) {
   el.classList.toggle("active");
   const content = el.nextElementSibling;
   if (el.classList[1] === "active") {
-    content.style.display = "block";
+    content.style.maxHeight = content.scrollHeight + "px";
     allEls.forEach((element) => {
       if (el !== element) {
         element.classList.remove("active");
-        element.nextElementSibling.style.display = "none";
+        element.style.maxHeight = null;
       }
     });
   } else {
-    content.style.display = "none";
+    content.style.maxHeight = null;
   }
 }

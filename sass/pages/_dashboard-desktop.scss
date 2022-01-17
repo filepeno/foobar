@@ -3,8 +3,8 @@
   font-size: 1.2rem;
 }
 
-.components .active, .components
-.collapsible:hover {
+.components .active,
+.components .collapsible:hover {
   background-color: colors.$secondary;
   color: colors.$contrast-secondary;
 }
@@ -17,7 +17,7 @@
   .db-info {
     font-size: 0.9rem;
     height: 55vw;
-  
+
     .dash-container {
       margin: 1rem;
       box-sizing: border-box;
@@ -27,15 +27,19 @@
       width: 25%;
       overflow-y: scroll;
       z-index: 1;
-  
+
       .dashboard-header {
         width: 25%;
         padding: 0;
       }
       .components {
-        -webkit-box-shadow: 4px 4px 8px -1px colors.$quaternary;
-        box-shadow: 4px 4px 8px -1px colors.$quaternary;
+        -webkit-box-shadow: 0 0 8px 1px colors.$quaternary;
+        box-shadow: 0 0 8px 1px colors.$quaternary;
         margin: 30px 10px 0px 0px;
+        &:hover {
+          box-shadow: 0 0 9px 4px colors.$quaternary;
+          transition: box-shadow 0.2s;
+        }
       }
       .iconify {
         margin-top: 0;
@@ -113,15 +117,15 @@
 }
 
 @media only screen and (max-width: 850px) {
-    .dashboard {
-      background: colors.$base;
+  .dashboard {
+    background: colors.$base;
 
-      .db-desktop {
-        display: block;
+    .db-desktop {
+      display: block;
 
-        .db-info {
-          height: 100vh;
-          .dash-container {
+      .db-info {
+        height: 100vh;
+        .dash-container {
           display: block;
           margin: 0;
           padding: 1rem;
@@ -130,17 +134,15 @@
           position: relative;
           width: auto;
           overflow-y: visible;
-          }
-          .components {
-            margin: 1rem 0 0 0;
-          }
-
         }
-
-        .db-bar-view {
-          display: none;
+        .components {
+          margin: 1rem 0 0 0;
         }
-    
+      }
+
+      .db-bar-view {
+        display: none;
+      }
     }
   }
   .components .collapsible {

@@ -15,9 +15,7 @@ button {
   background-color: var(--btn-color);
   border-radius: 1em;
   outline: none;
-  box-shadow: 0 0 1em 0.25em var(--glow-color),
-    0 0 4em 1em var(--glow-spread-color),
-    inset 0 0 0.75em 0.25em var(--glow-color);
+  box-shadow: 0 0 1em 0.25em var(--glow-color), 0 0 4em 1em var(--glow-spread-color), inset 0 0 0.75em 0.25em var(--glow-color);
   text-shadow: 0 0 0.5em var(--glow-color);
   position: relative;
   transition: all 0.3s;
@@ -50,55 +48,11 @@ button#log-guest {
 button:hover {
   color: var(--btn-color);
   background-color: var(--glow-color);
-  box-shadow: 0 0 1em 0.25em var(--glow-color),
-    0 0 4em 2em var(--glow-spread-color),
-    inset 0 0 0.75em 0.25em var(--glow-color);
+  box-shadow: 0 0 1em 0.25em var(--glow-color), 0 0 4em 2em var(--glow-spread-color), inset 0 0 0.75em 0.25em var(--glow-color);
 }
 
 button:active {
-  box-shadow: 0 0 0.6em 0.25em var(--glow-color),
-    0 0 2.5em 2em var(--glow-spread-color),
-    inset 0 0 0.5em 0.25em var(--glow-color);
-}
-
-.collapsible {
-  background-color: colors.$font-secondary;
-  color: colors.$font-primary;
-  cursor: pointer;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 1.5rem;
-  padding: 1.5rem;
-  --glow-color: none;
-  --glow-spread-color: none;
-  --enhanced-glow-color: none;
-  --btn-color: none;
-  font-weight: normal;
-  border-radius: 0;
-  box-shadow: none;
-  text-shadow: none;
-  transition: none;
-  margin: 0;
-  height: 100%;
-
-  &::after {
-    content: "";
-    display: block;
-    border-top: 1px solid colors.$font-primary;
-  }
-}
-
-.active,
-.collapsible:hover {
-  background-color: colors.$secondary;
-  color: colors.$contrast-primary;
-
-  // &::after {
-  //   border-top: 1px solid colors.$contrast-primary;
-  // }
-  
+  box-shadow: 0 0 0.6em 0.25em var(--glow-color), 0 0 2.5em 2em var(--glow-spread-color), inset 0 0 0.5em 0.25em var(--glow-color);
 }
 
 .modalPlus {
