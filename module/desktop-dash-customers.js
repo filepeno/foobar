@@ -2,6 +2,7 @@
 
 import { getCustomerSvgs } from "./desktop-dash";
 import { getRandomInt } from "./calculations";
+import { trackClickOnClickableElements } from "./bar-modals";
 
 let customers = [];
 
@@ -46,6 +47,7 @@ export async function toggleCustomer(bartender) {
           bt.customer = numberAsText;
         }
       });
+      trackClickOnClickableElements();
     } else {
       //run toggleFunction again
       toggleCustomer(bartender);

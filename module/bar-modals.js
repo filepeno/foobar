@@ -1,14 +1,24 @@
 "use strict";
 
 let newInterval;
+let clickableElsArray = [];
 
 export function trackClickOnClickableElements() {
   const clickableEls = document.querySelectorAll(".clickable");
   clickableEls.forEach((el) => {
-    el.addEventListener("click", () => {
-      toggleActiveElement(el, clickableEls);
-    });
+    if (checkIfElExistsInArray(el) === false) {
+      clickableElsArray.push(el);
+      el.addEventListener("click", () => {
+        console.log("clicked", el);
+        toggleActiveElement(el, clickableEls);
+      });
+    }
   });
+  console.log(clickableElsArray);
+}
+
+function checkIfElExistsInArray(newEl) {
+  return clickableElsArray.some((element) => element === newEl);
 }
 
 async function toggleActiveElement(el, allEls) {
