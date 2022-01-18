@@ -2,7 +2,7 @@
 
 import { getCustomerSvgs } from "./desktop-dash";
 import { getRandomInt } from "./calculations";
-import { trackClickOnClickableElements } from "./bar-modals";
+import { trackClickOnClickableElements, removeClickableElfromArray } from "./bar-modals";
 
 let customers = [];
 
@@ -53,6 +53,9 @@ export async function toggleCustomer(bartender) {
       toggleCustomer(bartender);
     }
   } else {
+    const clickableEl = customerContainer.querySelector(".clickable");
+    console.log("remove", clickableEl);
+    removeClickableElfromArray(clickableEl);
     customerContainer.innerHTML = "";
     customerContainer.style.visibility = "hidden";
   }

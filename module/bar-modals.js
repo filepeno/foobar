@@ -21,6 +21,10 @@ function checkIfElExistsInArray(newEl) {
   return clickableElsArray.some((element) => element === newEl);
 }
 
+export function removeClickableElfromArray(oldEl) {
+  console.log(clickableElsArray.indexOf(oldEl));
+}
+
 async function toggleActiveElement(el, allEls) {
   /* remove class from others */
   allEls.forEach((element) => {
