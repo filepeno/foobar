@@ -10,7 +10,7 @@ export function trackClickOnClickableElements() {
       clickableElsArray.push(el);
       el.addEventListener("click", () => {
         console.log("clicked", el);
-        toggleActiveElement(el, clickableEls);
+        toggleActiveElement(el, clickableElsArray);
       });
     }
   });
@@ -42,6 +42,7 @@ async function toggleActiveElement(el, allEls) {
     createModal(keyword, el, data);
   } else {
     removeAllModals();
+    toggleAllElementsOff();
     clearInterval(newInterval);
   }
 }
@@ -99,9 +100,9 @@ function trackClickOutsideModal(modal) {
 }
 
 function toggleAllElementsOff() {
-  const taps = document.querySelectorAll(".taps");
-  taps.forEach((tap) => {
-    tap.classList.remove("bar-el-active");
+  const allClickable = document.querySelectorAll(".clickable");
+  allClickable.forEach((clickable) => {
+    clickable.classList.remove("bar-el-active");
   });
 }
 
