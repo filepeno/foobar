@@ -83,7 +83,7 @@ function createModal(kw, el, data) {
 }
 
 function trackClickOutsideModal(modal) {
-  document.onclick = (e) => {
+  document.querySelector(".db-bar-view").onclick = (e) => {
     //check if didn't click on modal
     if (e.target === modal || e.target.closest(".modal") !== null) {
       console.log("clicked modal");
