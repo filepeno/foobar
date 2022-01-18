@@ -87,10 +87,6 @@ function trackClickOutsideModal(modal) {
     //check if didn't click on modal
     if (e.target === modal || e.target.closest(".modal") !== null) {
       console.log("clicked modal");
-    }
-    //check if clicked on clickable element
-    else if (e.target.classList[0] === "clickable" || e.target.closest(".clickable") !== null) {
-      console.log("clicked on clickable elements");
     } else {
       removeAllModals();
       toggleAllElementsOff();
