@@ -63,9 +63,10 @@ function createModal(kw, el, data) {
   //create and populate modal for taps
   if (kw === "taps") {
     changeTapModalContent(copy, data);
+    //append
+    document.querySelector(".bar-foreground").appendChild(copy);
   }
-  //append
-  document.querySelector(".bar-foreground").appendChild(copy);
+
   const newModal = document.querySelector(".modal");
   //make invisible
   newModal.style.visibility = "hidden";
