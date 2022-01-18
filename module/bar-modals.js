@@ -48,11 +48,14 @@ async function toggleActiveElement(el, allEls) {
 
 async function matchData(kw, el) {
   let data = await fetchData();
-  if (data.hasOwnProperty(kw)) {
-    const matchedData = data[kw];
+  let matchedData;
+  if (kw === "taps") {
+    matchedData = data[kw];
     //find exact data based on el id #
     const elNumber = el.id.charAt(el.id.length - 1);
     return matchedData[elNumber];
+  } else if (kw === "serving") {
+    console.log("clicked on customer");
   }
 }
 
@@ -83,7 +86,7 @@ function trackClickOutsideModal(modal) {
     }
     //check if clicked on clickable element
     else if (e.target.classList[0] === "clickable" || e.target.closest(".clickable") !== null) {
-      console.log("clicked on other clickable elements");
+      console.log("clicked on clickable elements");
     } else {
       removeAllModals();
       toggleAllElementsOff();
