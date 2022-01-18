@@ -56,6 +56,10 @@ async function matchData(kw, el) {
     return matchedData[elNumber];
   } else if (kw === "serving") {
     console.log("clicked on customer");
+    //find bartender name in container
+    //find bartender data and id of customer served
+    //find customer with that id in data
+    //return matchedData
   }
 }
 
