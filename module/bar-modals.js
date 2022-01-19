@@ -1,15 +1,28 @@
 "use strict";
 
 let newInterval;
+let clickableElsArray = [];
 
 export function trackClickOnClickableElements() {
   const clickableEls = document.querySelectorAll(".clickable");
   clickableEls.forEach((el) => {
-    el.addEventListener("click", () => {
-      toggleActiveElement(el, clickableEls);
-    });
+    if (checkIfElExistsInArray(el) === false) {
+      clickableElsArray.push(el);
+      el.addEventListener("click", () => {
+        console.log("clicked", el);
+        toggleActiveElement(el, clickableElsArray);
+      });
+    }
   });
 }
+
+function checkIfElExistsInArray(newEl) {
+  return clickableElsArray.some((element) => element === newEl);
+}
+
+// export function removeClickableElfromArray(oldEl) {
+//   console.log(clickableElsArray.indexOf(oldEl));
+// }
 
 async function toggleActiveElement(el, allEls) {
   /* remove class from others */
@@ -28,17 +41,25 @@ async function toggleActiveElement(el, allEls) {
     createModal(keyword, el, data);
   } else {
     removeAllModals();
+    toggleAllElementsOff();
     clearInterval(newInterval);
   }
 }
 
 async function matchData(kw, el) {
   let data = await fetchData();
-  if (data.hasOwnProperty(kw)) {
-    const matchedData = data[kw];
+  let matchedData;
+  if (kw === "taps") {
+    matchedData = data[kw];
     //find exact data based on el id #
     const elNumber = el.id.charAt(el.id.length - 1);
     return matchedData[elNumber];
+  } else if (kw === "serving") {
+    console.log("clicked on customer");
+    //find bartender name in container
+    //find bartender data and id of customer served
+    //find customer with that id in data
+    //return matchedData
   }
 }
 
@@ -49,9 +70,10 @@ function createModal(kw, el, data) {
   //create and populate modal for taps
   if (kw === "taps") {
     changeTapModalContent(copy, data);
+    //append
+    document.querySelector(".bar-foreground").appendChild(copy);
   }
-  //append
-  document.querySelector(".bar-foreground").appendChild(copy);
+
   const newModal = document.querySelector(".modal");
   //make invisible
   newModal.style.visibility = "hidden";
@@ -61,14 +83,14 @@ function createModal(kw, el, data) {
 }
 
 function trackClickOutsideModal(modal) {
-  document.onclick = (e) => {
+  document.querySelector(".db-bar-view").onclick = (e) => {
     //check if didn't click on modal
     if (e.target === modal || e.target.closest(".modal") !== null) {
       console.log("clicked modal");
     }
     //check if clicked on clickable element
     else if (e.target.classList[0] === "clickable" || e.target.closest(".clickable") !== null) {
-      console.log("clicked on other clickable elements");
+      console.log("clicked on clickable elements");
     } else {
       removeAllModals();
       toggleAllElementsOff();
@@ -77,9 +99,9 @@ function trackClickOutsideModal(modal) {
 }
 
 function toggleAllElementsOff() {
-  const taps = document.querySelectorAll(".taps");
-  taps.forEach((tap) => {
-    tap.classList.remove("bar-el-active");
+  const allClickable = document.querySelectorAll(".clickable");
+  allClickable.forEach((clickable) => {
+    clickable.classList.remove("bar-el-active");
   });
 }
 
@@ -135,6 +157,20 @@ async function fetchData() {
   return jsonData;
 }
 
+async function updateModalContent(kw, el, modal) {
+  //get new data
+  const data = await matchData(kw, el);
+  if (kw === "taps") {
+    changeTapModalContent(modal, data);
+  }
+}
+
+function changeTapModalContent(modal, data) {
+  modal.querySelector(".tap-number").textContent = `Tap #${data.id + 1}`;
+  modal.querySelector(".tap-name").textContent = `"${data.beer}"`;
+  displayPercentage(modal, data);
+}
+
 function displayPercentage(clone, data) {
   //calculate percentage
   const percentage = Math.round((parseInt(data.level) / 2500) * 100) + "%";
@@ -150,18 +186,4 @@ function displayPercentage(clone, data) {
     // clone.querySelector(".tap-percentage").style.color = "green";
     clone.querySelector(".tap-icon").src = "/assets/beer/full.svg";
   }
-}
-
-async function updateModalContent(kw, el, modal) {
-  //get new data
-  const data = await matchData(kw, el);
-  if (kw === "taps") {
-    changeTapModalContent(modal, data);
-  }
-}
-
-function changeTapModalContent(modal, data) {
-  modal.querySelector(".tap-number").textContent = `Tap #${data.id + 1}`;
-  modal.querySelector(".tap-name").textContent = `"${data.beer}"`;
-  displayPercentage(modal, data);
 }
