@@ -7,7 +7,7 @@ import { displayBartenders } from "./displayBartenders";
 import { calculateSales } from "./calculateSales";
 import { collapsible } from "./collapsible";
 
-// window.addEventListener("DOMContentLoaded", init);
+window.addEventListener("DOMContentLoaded", init);
 
 collapsible();
 

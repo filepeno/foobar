@@ -14,7 +14,6 @@ export function trackClickOnClickableElements() {
       });
     }
   });
-  // console.log(clickableElsArray);
 }
 
 function checkIfElExistsInArray(newEl) {
@@ -158,6 +157,20 @@ async function fetchData() {
   return jsonData;
 }
 
+async function updateModalContent(kw, el, modal) {
+  //get new data
+  const data = await matchData(kw, el);
+  if (kw === "taps") {
+    changeTapModalContent(modal, data);
+  }
+}
+
+function changeTapModalContent(modal, data) {
+  modal.querySelector(".tap-number").textContent = `Tap #${data.id + 1}`;
+  modal.querySelector(".tap-name").textContent = `"${data.beer}"`;
+  displayPercentage(modal, data);
+}
+
 function displayPercentage(clone, data) {
   //calculate percentage
   const percentage = Math.round((parseInt(data.level) / 2500) * 100) + "%";
@@ -173,18 +186,4 @@ function displayPercentage(clone, data) {
     // clone.querySelector(".tap-percentage").style.color = "green";
     clone.querySelector(".tap-icon").src = "/assets/beer/full.svg";
   }
-}
-
-async function updateModalContent(kw, el, modal) {
-  //get new data
-  const data = await matchData(kw, el);
-  if (kw === "taps") {
-    changeTapModalContent(modal, data);
-  }
-}
-
-function changeTapModalContent(modal, data) {
-  modal.querySelector(".tap-number").textContent = `Tap #${data.id + 1}`;
-  modal.querySelector(".tap-name").textContent = `"${data.beer}"`;
-  displayPercentage(modal, data);
 }
