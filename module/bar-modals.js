@@ -9,7 +9,6 @@ export function trackClickOnClickableElements() {
     if (checkIfElExistsInArray(el) === false) {
       clickableElsArray.push(el);
       el.addEventListener("click", () => {
-        console.log("clicked", el);
         toggleActiveElement(el, clickableElsArray);
       });
     }
@@ -19,10 +18,6 @@ export function trackClickOnClickableElements() {
 function checkIfElExistsInArray(newEl) {
   return clickableElsArray.some((element) => element === newEl);
 }
-
-// export function removeClickableElfromArray(oldEl) {
-//   console.log(clickableElsArray.indexOf(oldEl));
-// }
 
 async function toggleActiveElement(el, allEls) {
   /* remove class from others */
@@ -55,7 +50,6 @@ async function matchData(kw, el) {
     const elNumber = el.id.charAt(el.id.length - 1);
     return matchedData[elNumber];
   } else if (kw === "serving") {
-    console.log("clicked on customer");
     //find bartender name in container
     //find bartender data and id of customer served
     //find customer with that id in data
@@ -86,11 +80,9 @@ function trackClickOutsideModal(modal) {
   document.querySelector(".db-bar-view").onclick = (e) => {
     //check if didn't click on modal
     if (e.target === modal || e.target.closest(".modal") !== null) {
-      console.log("clicked modal");
     }
     //check if clicked on clickable element
     else if (e.target.classList[0] === "clickable" || e.target.closest(".clickable") !== null) {
-      console.log("clicked on clickable elements");
     } else {
       removeAllModals();
       toggleAllElementsOff();
