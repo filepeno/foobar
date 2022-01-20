@@ -9,14 +9,14 @@ window.addEventListener("DOMContentLoaded", start);
 function start() {
   //check if user has logged in or not
   if (status === "login") {
-    console.log(status);
+    // console.log(status);
     runPostData();
     document.querySelector(".mutable-container-guest").classList.remove("display");
     document.querySelector(".mutable-container-login").classList.add("display");
     document.querySelector("#username").disabled = true;
     document.querySelector("#email").disabled = true;
   } else if (status === "guest") {
-    console.log(status);
+    // console.log(status);
     runPostData();
     document.querySelector(".mutable-container-login").classList.remove("display");
     document.querySelector(".mutable-container-guest").classList.add("display");

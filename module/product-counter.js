@@ -15,7 +15,7 @@ export function registerCounter(e) {
     if (beerToAdd.quantity > 1) {
       removeQuantity();
     } else {
-      console.log("can't add 0 beers to cart");
+      // console.log("can't add 0 beers to cart");
     }
   }
   displayModalQuantity();
@@ -26,20 +26,20 @@ export function createBeerObject(beer) {
   newBeer.beer = beer;
   newBeer.quantity = 1;
   beerToAdd = newBeer;
-  console.log("ready to add to cart:", beerToAdd);
+  // console.log("ready to add to cart:", beerToAdd);
   displayModalQuantity();
 }
 
 function addQuantity() {
   //increase quantity by one
   beerToAdd.quantity++;
-  console.log("ready to add to cart:", beerToAdd.quantity, beerToAdd.beer.name);
+  // console.log("ready to add to cart:", beerToAdd.quantity, beerToAdd.beer.name);
 }
 
 function removeQuantity() {
   //decrease quantity by one
   beerToAdd.quantity--;
-  console.log("ready to add to cart:", beerToAdd.quantity, beerToAdd.beer.name);
+  // console.log("ready to add to cart:", beerToAdd.quantity, beerToAdd.beer.name);
 }
 
 export function displayModalQuantity() {

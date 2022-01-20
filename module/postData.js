@@ -1,12 +1,12 @@
 export function postData(event) {
   event.preventDefault();
-  console.log("ready to post");
+  // console.log("ready to post");
 
   const order = JSON.parse(localStorage.getItem("order"));
 
   //map array by order names and quantities
   const cleanedOrder = order.map(getNameAndQuantity);
-  console.log(cleanedOrder);
+  // console.log(cleanedOrder);
 
   const postData = JSON.stringify(cleanedOrder);
 
@@ -17,12 +17,12 @@ export function postData(event) {
     },
     body: postData,
   })
-    .then((res) => res.json(), console.log("posted"))
+    .then((res) => res.json(), // console.log("posted"))
     .catch((err) => {
       console.error(err);
     });
 
-  console.log(postData);
+  // console.log(postData);
   setTimeout(openPage, 2500);
 }
 

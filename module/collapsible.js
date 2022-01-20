@@ -3,7 +3,7 @@ export function collapsible() {
   // let i;
   coll.forEach((element) => {
     element.addEventListener("click", function () {
-      console.log("clicked on", this);
+      // console.log("clicked on", this);
       toggleActiveElement(this, coll);
       // this.classList.toggle("active");
     });

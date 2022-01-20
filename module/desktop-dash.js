@@ -73,9 +73,9 @@ function getBartenderStatus(bartender) {
     if (bt.btName === bartenderName) {
       const oldStatus = bt.btStatus;
       const btSpotAtCounter = getBartenderSpotAtCounter(bartender);
-      // console.log(bt.btName, "old Status:", oldStatus);
+      // // console.log(bt.btName, "old Status:", oldStatus);
       if (oldStatus === "") {
-        // console.log("there is no oldStatus yet");
+        // // console.log("there is no oldStatus yet");
         //import bt based on the newStatus only
         if (newStatus === "reserveTap" || newStatus === "replaceKeg" || newStatus === "receivePayment") {
           importBartenderSvg(bartender, "leaning", btSpotAtCounter.element);
@@ -110,7 +110,7 @@ function getBartenderStatus(bartender) {
         //TODO: if newStatus === "replaceKeg"
       } else {
         if ((oldStatus === "startServing" || oldStatus === "waiting" || oldStatus === "reserveTap") && newStatus === "pourBeer") {
-          // console.log("move bartender to bar");
+          // // console.log("move bartender to bar");
           getBartenderAndTap(bartender, "first");
         } else if (oldStatus === "pourBeer" && newStatus === "releaseTap") {
           //TODO
@@ -141,7 +141,7 @@ function getBartenderStatus(bartender) {
           }
           // backup if newStatus is releaseTap again
           else if (newStatus === "releaseTap") {
-            console.log(bartender.name, "is releasing the tap too long ");
+            // console.log(bartender.name, "is releasing the tap too long ");
           } else {
             moveBartenderToCounter(bartender);
           }
@@ -150,7 +150,7 @@ function getBartenderStatus(bartender) {
         //TODO: if oldStatus === "replaceKeg" && newStatus === "pourBeer"
         bt.btStatus = newStatus;
       }
-      // console.log(bt.btName, "new Status:", bt.btStatus);
+      // // console.log(bt.btName, "new Status:", bt.btStatus);
     }
   });
 }

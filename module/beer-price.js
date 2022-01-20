@@ -9,7 +9,7 @@ export function calculateSubTotal(basePrice, obj) {
 }
 
 export function calculateTotal(order) {
-  console.log("calculate total on: ", order);
+  // console.log("calculate total on: ", order);
   //check if empty
   if (order.length !== 0) {
     const subTotals = [];
@@ -17,7 +17,7 @@ export function calculateTotal(order) {
       const subTotal = calculateSubTotal(calculateBasePrice(obj.beer.alc), obj);
       subTotals.push(subTotal);
     });
-    console.log(subTotals);
+    // console.log(subTotals);
     //calculate sum of values in array
     const reducerFunc = (accumulator, curr) => accumulator + curr;
     return subTotals.reduce(reducerFunc);

@@ -3,13 +3,13 @@
 import { calculateBasePrice, calculateSubTotal, calculateTotal } from "./beer-price";
 
 export function populateOrderSummary() {
-  console.log("ready");
+  // console.log("ready");
   //check if local storage has order
   if (!localStorage.getItem("order")) {
-    console.log("cart is empty");
+    // console.log("cart is empty");
   } else {
     const order = JSON.parse(localStorage.getItem("order"));
-    console.log(order);
+    // console.log(order);
     displaySummary(order);
     displayTotal(order);
   }

@@ -54,7 +54,7 @@ export async function toggleCustomer(bartender) {
     }
   } else {
     // const clickableEl = customerContainer.querySelector(".clickable");
-    // console.log("remove", clickableEl);
+    // // console.log("remove", clickableEl);
     // removeClickableElfromArray(clickableEl);
     customerContainer.innerHTML = "";
     customerContainer.style.visibility = "hidden";

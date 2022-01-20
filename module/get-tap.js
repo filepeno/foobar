@@ -51,7 +51,7 @@ export function removePreviousTap(bartender) {
         // bt.usingTap = "";
         bt.usingTap.querySelector("path").classList.remove("hidden");
       } else {
-        console.log(bartender.name, " hasn't used a tap yet");
+        // console.log(bartender.name, " hasn't used a tap yet");
       }
     }
   });

@@ -5,37 +5,37 @@ let dannieCount = 0;
 
 export function peterCalculate() {
   peterCount++;
-  console.log("tester" + peterCount);
+  // console.log("tester" + peterCount);
 }
 
 export function peterCalculatePost() {
-  console.log("testing" + peterCount);
+  // console.log("testing" + peterCount);
   return peterCount;
 }
 export function klausCalculate() {
   klausCount++;
-  console.log("tester" + klausCount);
+  // console.log("tester" + klausCount);
 }
 
 export function klausCalculatePost() {
-  console.log("testing" + klausCount);
+  // console.log("testing" + klausCount);
   return klausCount;
 }
 export function jonasCalculate() {
   jonasCount++;
-  console.log("tester" + jonasCount);
+  // console.log("tester" + jonasCount);
 }
 
 export function jonasCalculatePost() {
-  console.log("testing" + jonasCount);
+  // console.log("testing" + jonasCount);
   return jonasCount;
 }
 export function dannieCalculate() {
   dannieCount++;
-  console.log("tester" + dannieCount);
+  // console.log("tester" + dannieCount);
 }
 
 export function dannieCalculatePost() {
-  console.log("testing" + dannieCount);
+  // console.log("testing" + dannieCount);
   return dannieCount;
 }
